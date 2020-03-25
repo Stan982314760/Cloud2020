@@ -1,0 +1,24 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: feign-order-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    instance-id: feign-order80
+    prefer-ip-address: true
+
+ribbon:
+  ReadTimeout: 4000 #处理请求的超时时间 默认1秒
+  ConnectTimeout: 4000 #连接建立的超时时长 默认1秒
+
+logging:
+  level:
+    com.atguigu.springcloud.service.FeignOrderService: debug #设定Feign接口的日志级别
