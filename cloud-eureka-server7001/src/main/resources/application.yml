@@ -1,0 +1,24 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: cloud-eureka-server
+
+eureka:
+  instance:
+    prefer-ip-address: true #使用ip地址
+    hostname: eureka7001.com  #eureka服务端的主机名称 需要本地hosts文件做好映射
+
+  client:
+    register-with-eureka: false #false表示不在注册中心注册这个应用; server无需注册 只有client需要注册
+    fetch-registry: false #false表示不在注册中心拉取注册的所有应用; client需要开启
+    service-url:
+#      defaultZone: http://eureka7002.com:7002/eureka,http://eureka7001.com:7001/eureka #eureka集群注册中心地址
+      defaultZone: http://eureka7001.com:7001/eureka
+
+#  server:
+#    enable-self-preservation: false #关闭自我保护
+#    evictionIntervalTimerInMs: 2 #设定服务器清除过期服务(即过了最大等待时间 还没发心跳的服务)的频率 默认60秒清除一次
+
+
