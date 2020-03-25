@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -29,7 +30,7 @@ public class PaymentController {
             log.info("from payment 8002: id不存在");
             return new CommonResult(444, serverPort + " 你查找的id不存在", null);
         }
-
+        
         return new CommonResult(200, serverPort + " 查询成功", payment);
     }
 
@@ -64,4 +65,19 @@ public class PaymentController {
 
         return "sucess";
     }
+
+    //================MyRoundRule Test
+    @GetMapping("/payment/lb")
+    public String testLb(){
+        return "success, from " + serverPort;
+    }
+
+
+    //=======测试Feign调用超时 暂停3秒
+    @GetMapping("/payment/feign/timeout")
+    public String feignTimeout(){
+        try { TimeUnit.SECONDS.sleep(3); } catch (InterruptedException e) { e.printStackTrace(); }
+        return "time out over";
+    }
+
 }

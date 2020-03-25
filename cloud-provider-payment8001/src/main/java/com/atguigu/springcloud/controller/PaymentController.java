@@ -42,4 +42,10 @@ public class PaymentController {
         log.info("插入了一条记录: " + payment);
         return new CommonResult(200, serverPort + " 插入成功", payment);
     }
+
+    //================MyRoundRule Test
+    @GetMapping("/payment/lb")
+    public String testLb(){
+        return "success, from " + serverPort;
+    }
 }
