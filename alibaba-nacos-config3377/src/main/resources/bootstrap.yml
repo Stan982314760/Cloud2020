@@ -1,0 +1,28 @@
+server:
+  port: 3377
+
+spring:
+  application:
+    name: nacos-config-client
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.138.128:3333 #nginx地址
+      #        server-addr: localhost:8848
+
+#      config:
+#        server-addr: localhost:8848 #配置中心地址
+#        prefix: stan  #指定前缀名 如果不指定 默认为${spring.application.name}
+#        group: STAN_GROUP #指定组名 默认为DEFAULT_GROUP
+#        namespace: f34412b1-dad8-43ed-b051-54309d20d5fd #指定命名空间名称 默认是public 如果有自定义填自定义命名空间对应的id值
+#        file-extension: yaml  #即yml
+
+      config: #linux nacos集群环境测试
+        server-addr: 192.168.138.128:3333 #nginx地址
+        prefix: stan
+        file-extension: yaml
+
+
+
+

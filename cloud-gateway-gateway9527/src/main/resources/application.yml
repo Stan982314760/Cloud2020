@@ -1,0 +1,37 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway-9527
+  cloud:
+    gateway:
+      routes:
+        - id: route1 #路由id名称
+#          uri: http://localhost:8001 #路由转发到的uri 静态路由协议
+          uri: lb://CLOUD-PAYMENT-SERVICE #根据服务名称动态路由 协议为 lb
+          predicates: #断言规则 访问路径匹配下面规则
+            - Path=/payment/get/**
+#            - Before=2020-03-26T21:08:43.182+08:00[Asia/Shanghai]
+#            - Cookie=username,stan  #带上username的cookie 且值为stan
+#            - Header=username,stan
+#            - Method=POST
+            - Query=id,\d+
+
+
+
+        - id: route2
+#          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE #根据服务名称动态路由 协议为 lb
+          predicates:
+            - Path=/payment/lb/**
+
+eureka:
+  instance:
+    instance-id: gateway9527
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka

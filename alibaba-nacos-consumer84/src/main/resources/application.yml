@@ -1,0 +1,32 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: alibaba-order-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+      datasource:
+        haha:   #给数据库设置起个名字
+          nacos:
+            serverAddr: localhost:8848
+            groupId: DEFAULT_GROUP
+            dataId: sentinel-config-test
+            dataType: json
+            ruleType: flow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  sentinel:
+    enabled: true

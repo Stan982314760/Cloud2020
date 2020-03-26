@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: hystrix-feign-order
+
+eureka:
+  instance:
+    instance-id: order80
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+feign:
+  hystrix:
+    enabled: true #开启Feign自身的降级功能 优先级低于@HystrixCommand
