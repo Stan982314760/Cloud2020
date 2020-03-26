@@ -22,6 +22,15 @@
         <module>cloud-zookeeper-provider-payment8004</module>
         <module>cloud-zookeeper-consumer-order80</module>
         <module>cloud-consumer-feign-order80</module>
+        <module>cloud-hystrix-provider-payment8001</module>
+        <module>cloud-hystrix-feign-order80</module>
+        <module>cloud-hystrix-consumer-dashboard9001</module>
+        <module>alibaba-sentinel-service8401</module>
+        <module>alibaba-provider-payment9003</module>
+        <module>alibaba-provider-payment9004</module>
+        <module>alibaba-nacos-consumer84</module>
+        <module>cloud-gateway-gateway9527</module>
+        <module>alibaba-nacos-config3377</module>
     </modules>
     <packaging>pom</packaging>
 
